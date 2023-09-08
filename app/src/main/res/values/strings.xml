@@ -16,4 +16,7 @@
     <string name="error_text">The title or description cannot be empty.</string>
     <string name="delete">Delete</string>
     <string name="cancel">Cancel</string>
+    <string name="languages">Languages</string>
+
+    <string name="checkedItem">1</string>
 </resources>

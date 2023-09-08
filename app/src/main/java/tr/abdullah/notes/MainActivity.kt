@@ -1,16 +1,21 @@
 package tr.abdullah.notes
 
 import android.content.Intent
+import android.content.res.Configuration
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.AlertDialog
 import androidx.recyclerview.widget.LinearLayoutManager
 import tr.abdullah.notes.databinding.ActivityMainBinding
+import java.util.Locale
 
 class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
     private lateinit var db: NotesDatabaseHelper
     private lateinit var notesAdapter: NotesAdapter
+
+    private val languages = arrayOf("Türkçe", "English")
 
     override fun onCreate(savedInstanceState: Bundle?) {
 
@@ -29,6 +34,56 @@ class MainActivity : AppCompatActivity() {
             val intent = Intent(this, AddNoteActivity::class.java)
             startActivity(intent)
         }
+
+        binding.languageButton.setOnClickListener {
+
+            changeLanguage()
+        }
+    }
+
+    fun changeLanguage() {
+
+        val checkedItem: Int = getString(R.string.checkedItem).toInt()
+        val alert = AlertDialog.Builder(this)
+
+        alert.setTitle(R.string.languages)
+
+        alert.setSingleChoiceItems(languages, checkedItem) { dialogInterface, i ->
+
+            when (i) {
+
+                0 -> {
+                    setLanguage("TR")
+                    recreate()
+
+                }
+
+                1 -> {
+                    setLanguage("EN")
+                    recreate()
+                }
+            }
+
+            dialogInterface.dismiss()
+        }
+
+        alert.setNegativeButton(R.string.cancel) { dialogInterface, i ->
+
+            dialogInterface.dismiss()
+        }
+
+        alert.create().show()
+    }
+
+    private fun setLanguage(language: String) {
+
+        val locale = Locale(language)
+        Locale.setDefault(locale)
+
+        val config = Configuration()
+        config.locale = locale
+
+        baseContext.resources.updateConfiguration(config, baseContext.resources.displayMetrics)
     }
 
     override fun onResume() {

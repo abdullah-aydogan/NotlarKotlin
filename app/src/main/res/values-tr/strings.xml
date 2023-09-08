@@ -16,4 +16,7 @@
     <string name="error_text">Başlık veya açıklama boş olamaz.</string>
     <string name="delete">Sil</string>
     <string name="cancel">İptal</string>
+    <string name="languages">Diller</string>
+
+    <string name="checkedItem">0</string>
 </resources>
