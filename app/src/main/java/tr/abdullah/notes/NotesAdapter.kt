@@ -55,7 +55,7 @@ class NotesAdapter(private var notes: List<Note>, context: Context)
             db.deleteNote(note.id)
             refreshData(db.getAllNotes())
 
-            Toast.makeText(holder.itemView.context, "Note deleted", Toast.LENGTH_SHORT).show()
+            Toast.makeText(holder.itemView.context, R.string.note_deleted, Toast.LENGTH_SHORT).show()
         }
     }
 

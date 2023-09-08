@@ -40,7 +40,7 @@ class UpdateNoteActivity : AppCompatActivity() {
             db.updateNote(updateNote)
             finish()
 
-            Toast.makeText(this, "Changes saved", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, R.string.changes_saved, Toast.LENGTH_SHORT).show()
         }
     }
 }
