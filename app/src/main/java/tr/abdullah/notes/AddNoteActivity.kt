@@ -22,12 +22,21 @@ class AddNoteActivity : AppCompatActivity() {
 
             val title = binding.titleEditText.text.toString()
             val content = binding.contentEditText.text.toString()
-            val note = Note(0, title, content)
 
-            db.insertNote(note)
-            finish()
+            if(title.isEmpty() || content.isEmpty()) {
 
-            Toast.makeText(this, R.string.note_saved, Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, "Başlık veya açıklama boş olamaz.", Toast.LENGTH_SHORT).show()
+            }
+
+            else {
+
+                val note = Note(0, title, content)
+
+                db.insertNote(note)
+                finish()
+
+                Toast.makeText(this, R.string.note_saved, Toast.LENGTH_SHORT).show()
+            }
         }
     }
 }

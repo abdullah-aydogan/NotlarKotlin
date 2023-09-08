@@ -35,12 +35,21 @@ class UpdateNoteActivity : AppCompatActivity() {
 
             val newTitle = binding.updateTitleEditText.text.toString()
             val newContent = binding.updateContentEditText.text.toString()
-            val updateNote = Note(noteId, newTitle, newContent)
 
-            db.updateNote(updateNote)
-            finish()
+            if(newTitle.isEmpty() || newContent.isEmpty()) {
 
-            Toast.makeText(this, R.string.changes_saved, Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, R.string.error_text, Toast.LENGTH_SHORT).show()
+            }
+
+            else {
+
+                val updateNote = Note(noteId, newTitle, newContent)
+
+                db.updateNote(updateNote)
+                finish()
+
+                Toast.makeText(this, R.string.changes_saved, Toast.LENGTH_SHORT).show()
+            }
         }
     }
 }

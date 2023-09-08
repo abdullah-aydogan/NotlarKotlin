@@ -11,4 +11,5 @@
     <string name="note_saved">Not kaydedildi.</string>
     <string name="note_deleted">Not silindi.</string>
     <string name="changes_saved">Değişiklikler kaydedildi.</string>
+    <string name="error_text">Başlık veya açıklama boş olamaz.</string>
 </resources>

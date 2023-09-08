@@ -11,4 +11,5 @@
     <string name="note_saved">Note saved.</string>
     <string name="note_deleted">Note deleted.</string>
     <string name="changes_saved">Changes saved.</string>
+    <string name="error_text">The title or description cannot be empty.</string>
 </resources>
