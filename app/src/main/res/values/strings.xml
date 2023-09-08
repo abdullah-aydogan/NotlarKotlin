@@ -7,9 +7,13 @@
     <string name="edit_note">Edit Note</string>
     <string name="content">Content</string>
     <string name="title">Title</string>
+    <string name="alert_text">Are you sure you want to delete the note?</string>
+    <string name="alert_title">Delete Note</string>
 
     <string name="note_saved">Note saved.</string>
     <string name="note_deleted">Note deleted.</string>
     <string name="changes_saved">Changes saved.</string>
     <string name="error_text">The title or description cannot be empty.</string>
+    <string name="delete">Delete</string>
+    <string name="cancel">Cancel</string>
 </resources>

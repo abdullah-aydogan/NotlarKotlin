@@ -30,14 +30,14 @@
     <EditText
         android:id="@+id/titleEditText"
         android:layout_width="match_parent"
-        android:layout_height="60dp"
+        android:layout_height="80dp"
         android:hint="@string/enter_the_title"
         android:padding="12dp"
         android:textSize="20sp"
         android:layout_below="@id/addNoteHeading"
         android:background="@drawable/orange_border"
         android:layout_marginTop="16dp"
-        android:maxLines="1"
+        android:maxLength="50"
         android:fontFamily="@font/poppins" />
 
     <EditText

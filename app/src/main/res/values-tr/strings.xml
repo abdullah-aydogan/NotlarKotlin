@@ -7,9 +7,13 @@
     <string name="edit_note">Not Düzenle</string>
     <string name="content">İçerik</string>
     <string name="title">Başlık</string>
+    <string name="alert_text">Notu silmek istediğinizden emin misiniz?</string>
+    <string name="alert_title">Not Sil</string>
 
     <string name="note_saved">Not kaydedildi.</string>
     <string name="note_deleted">Not silindi.</string>
     <string name="changes_saved">Değişiklikler kaydedildi.</string>
     <string name="error_text">Başlık veya açıklama boş olamaz.</string>
+    <string name="delete">Sil</string>
+    <string name="cancel">İptal</string>
 </resources>

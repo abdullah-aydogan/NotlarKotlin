@@ -8,6 +8,8 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
+import androidx.cardview.widget.CardView
 import androidx.recyclerview.widget.RecyclerView
 
 class NotesAdapter(private var notes: List<Note>, context: Context)
@@ -21,6 +23,7 @@ class NotesAdapter(private var notes: List<Note>, context: Context)
         val contentTextView: TextView = itemView.findViewById(R.id.contentTextView)
         val updateButton: ImageView = itemView.findViewById(R.id.updateButton)
         val deleteButton: ImageView = itemView.findViewById(R.id.deleteButton)
+        val noteCardView: CardView = itemView.findViewById(R.id.noteCardView)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): NoteViewHolder {
@@ -52,10 +55,36 @@ class NotesAdapter(private var notes: List<Note>, context: Context)
 
         holder.deleteButton.setOnClickListener {
 
-            db.deleteNote(note.id)
-            refreshData(db.getAllNotes())
+            val alert = AlertDialog.Builder(holder.itemView.context)
 
-            Toast.makeText(holder.itemView.context, R.string.note_deleted, Toast.LENGTH_SHORT).show()
+            alert.setMessage(R.string.alert_text)
+            alert.setTitle(R.string.alert_title)
+            alert.setIcon(R.drawable.baseline_delete_24)
+
+            alert.setPositiveButton(R.string.delete) { dialogInferface, i ->
+
+                db.deleteNote(note.id)
+                refreshData(db.getAllNotes())
+
+                Toast.makeText(holder.itemView.context, R.string.note_deleted, Toast.LENGTH_SHORT).show()
+            }
+
+            alert.setNegativeButton(R.string.cancel) {dialogInterface, i ->
+
+                dialogInterface.dismiss()
+            }
+
+            alert.create().show()
+        }
+
+        holder.noteCardView.setOnClickListener {
+
+            val intent = Intent(holder.itemView.context, ViewNoteActivity::class.java).apply {
+
+                putExtra("note_id", note.id)
+            }
+
+            holder.itemView.context.startActivity(intent)
         }
     }
 
