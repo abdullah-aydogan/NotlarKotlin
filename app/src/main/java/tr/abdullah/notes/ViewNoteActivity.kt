@@ -2,6 +2,7 @@ package tr.abdullah.notes
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.text.method.ScrollingMovementMethod
 import tr.abdullah.notes.databinding.ActivityViewNoteBinding
 
 class ViewNoteActivity : AppCompatActivity() {
@@ -28,6 +29,8 @@ class ViewNoteActivity : AppCompatActivity() {
         val note = db.getNoteByID(noteId)
 
         binding.noteHeading.text = note.title
-        binding.noteContent.setText(note.content)
+        binding.noteContent.text = note.content
+
+        binding.noteContent.movementMethod = ScrollingMovementMethod()
     }
 }

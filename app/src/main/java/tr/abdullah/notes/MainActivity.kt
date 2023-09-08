@@ -41,7 +41,7 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    fun changeLanguage() {
+    private fun changeLanguage() {
 
         val checkedItem: Int = getString(R.string.checkedItem).toInt()
         val alert = AlertDialog.Builder(this)
