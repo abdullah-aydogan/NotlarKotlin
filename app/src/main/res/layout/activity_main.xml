@@ -14,29 +14,30 @@
         android:layout_alignParentTop="true"
         android:layout_marginTop="16dp"
         android:fontFamily="@font/poppins"
-        android:text="Notes"
+        android:text="@string/notes"
         android:layout_marginStart="18dp"
         android:textColor="@color/orange"
-        android:textSize="24sp"/>
+        android:textSize="24sp" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/notesRecyclerView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginTop="50dp"
-        android:padding="16dp"/>
+        android:padding="16dp" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/addButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
         android:layout_alignParentEnd="true"
-        android:layout_marginBottom="16dp"
-        android:layout_marginEnd="16dp"
+        android:layout_alignParentBottom="true"
         android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="16dp"
+        android:backgroundTint="@color/orange"
+        android:contentDescription="@string/add_note"
         android:src="@drawable/baseline_add_24"
-        android:tint="@color/white"
-        android:backgroundTint="@color/orange"/>
+        app:tint="@android:color/white" />
 
 </RelativeLayout>
