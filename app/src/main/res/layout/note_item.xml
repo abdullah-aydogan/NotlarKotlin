@@ -18,17 +18,43 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp">
+            android:layout_marginBottom="20dp">
 
             <com.google.android.material.textview.MaterialTextView
-                android:id="@+id/titleTextView"
-                android:layout_width="250dp"
+                android:id="@+id/dateTimeTextView"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/title"
+                android:layout_alignParentEnd="true"
+                android:gravity="center"
+                android:textSize="12sp"
                 android:fontFamily="@font/poppins"
-                android:textColor="@color/material_dynamic_primary50"
-                android:textSize="18sp"
-                android:textStyle="bold" />
+                android:maxLines="1"/>
+
+        </RelativeLayout>
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/titleTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/title"
+            android:fontFamily="@font/poppins"
+            android:textColor="@color/material_dynamic_primary50"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/contentTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/content"
+            android:fontFamily="@font/poppins"
+            android:maxLines="3"
+            android:layout_marginTop="4dp" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp">
 
             <ImageView
                 android:id="@+id/updateButton"
@@ -47,25 +73,6 @@
 
         </RelativeLayout>
 
-        <com.google.android.material.textview.MaterialTextView
-            android:id="@+id/contentTextView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/content"
-            android:fontFamily="@font/poppins"
-            android:maxLines="3"
-            android:layout_marginTop="4dp" />
-
-        <com.google.android.material.textview.MaterialTextView
-            android:id="@+id/dateTimeTextView"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:textAlignment="textEnd"
-            android:fontFamily="@font/poppins"
-            android:maxLines="1"/>
-
     </LinearLayout>
-
 
 </com.google.android.material.card.MaterialCardView>

@@ -60,7 +60,6 @@ class MainActivity : AppCompatActivity() {
                 0 -> {
                     setLanguage("TR")
                     recreate()
-
                 }
 
                 1 -> {
