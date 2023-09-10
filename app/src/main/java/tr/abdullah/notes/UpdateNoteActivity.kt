@@ -4,6 +4,8 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
 import tr.abdullah.notes.databinding.ActivityUpdateNoteBinding
+import java.text.DateFormat
+import java.util.Calendar
 
 class UpdateNoteActivity : AppCompatActivity() {
 
@@ -36,6 +38,11 @@ class UpdateNoteActivity : AppCompatActivity() {
             val newTitle = binding.updateTitleEditText.text.toString()
             val newContent = binding.updateContentEditText.text.toString()
 
+            val calendar = Calendar.getInstance().time
+            val dateFormat = DateFormat.getDateInstance(DateFormat.FULL).format(calendar)
+
+            val newdateTime = dateFormat.toString()
+
             if(newTitle.isEmpty() || newContent.isEmpty()) {
 
                 Toast.makeText(this, R.string.error_text, Toast.LENGTH_SHORT).show()
@@ -43,7 +50,7 @@ class UpdateNoteActivity : AppCompatActivity() {
 
             else {
 
-                val updateNote = Note(noteId, newTitle, newContent)
+                val updateNote = Note(noteId, newTitle, newContent, newdateTime)
 
                 db.updateNote(updateNote)
                 finish()

@@ -4,8 +4,8 @@ import android.content.Intent
 import android.content.res.Configuration
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import androidx.appcompat.app.AlertDialog
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import tr.abdullah.notes.databinding.ActivityMainBinding
 import java.util.Locale
 
@@ -39,12 +39,17 @@ class MainActivity : AppCompatActivity() {
 
             changeLanguage()
         }
+
+        binding.fingerPrintButton.setOnClickListener {
+
+            setFingerprint()
+        }
     }
 
     private fun changeLanguage() {
 
         val checkedItem: Int = getString(R.string.checkedItem).toInt()
-        val alert = AlertDialog.Builder(this)
+        val alert = MaterialAlertDialogBuilder(this)
 
         alert.setTitle(R.string.languages)
 
@@ -84,6 +89,11 @@ class MainActivity : AppCompatActivity() {
         config.locale = locale
 
         baseContext.resources.updateConfiguration(config, baseContext.resources.displayMetrics)
+    }
+
+    private fun setFingerprint() {
+
+
     }
 
     override fun onResume() {

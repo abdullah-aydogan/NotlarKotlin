@@ -8,9 +8,9 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
-import androidx.appcompat.app.AlertDialog
 import androidx.cardview.widget.CardView
 import androidx.recyclerview.widget.RecyclerView
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
 
 class NotesAdapter(private var notes: List<Note>, context: Context)
     : RecyclerView.Adapter<NotesAdapter.NoteViewHolder>() {
@@ -21,6 +21,7 @@ class NotesAdapter(private var notes: List<Note>, context: Context)
 
         val titleTextView: TextView = itemView.findViewById(R.id.titleTextView)
         val contentTextView: TextView = itemView.findViewById(R.id.contentTextView)
+        val dateTimeTextView: TextView = itemView.findViewById(R.id.dateTimeTextView)
         val updateButton: ImageView = itemView.findViewById(R.id.updateButton)
         val deleteButton: ImageView = itemView.findViewById(R.id.deleteButton)
         val noteCardView: CardView = itemView.findViewById(R.id.noteCardView)
@@ -42,6 +43,7 @@ class NotesAdapter(private var notes: List<Note>, context: Context)
 
         holder.titleTextView.text = note.title
         holder.contentTextView.text = note.content
+        holder.dateTimeTextView.text = note.dateTime
 
         holder.updateButton.setOnClickListener {
 
@@ -55,7 +57,7 @@ class NotesAdapter(private var notes: List<Note>, context: Context)
 
         holder.deleteButton.setOnClickListener {
 
-            val alert = AlertDialog.Builder(holder.itemView.context)
+            val alert = MaterialAlertDialogBuilder(holder.itemView.context)
 
             alert.setMessage(R.string.alert_text)
             alert.setTitle(R.string.alert_title)

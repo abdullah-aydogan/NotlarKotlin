@@ -2,8 +2,8 @@
     <string name="app_name">Notlar</string>
     <string name="add_note">Not Ekle</string>
     <string name="notes">Notlar</string>
-    <string name="enter_the_title">Başlık giriniz</string>
-    <string name="enter_the_description">Açıklama giriniz</string>
+    <string name="enter_the_title">Başlık</string>
+    <string name="enter_the_description">Açıklama</string>
     <string name="edit_note">Not Düzenle</string>
     <string name="content">İçerik</string>
     <string name="title">Başlık</string>

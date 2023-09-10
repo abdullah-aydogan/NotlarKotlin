@@ -4,6 +4,8 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
 import tr.abdullah.notes.databinding.ActivityAddNoteBinding
+import java.text.DateFormat
+import java.util.Calendar
 
 class AddNoteActivity : AppCompatActivity() {
 
@@ -23,14 +25,19 @@ class AddNoteActivity : AppCompatActivity() {
             val title = binding.titleEditText.text.toString()
             val content = binding.contentEditText.text.toString()
 
+            val calendar = Calendar.getInstance().time
+            val dateFormat = DateFormat.getDateInstance(DateFormat.FULL).format(calendar)
+
+            val dateTime = dateFormat.toString()
+
             if(title.isEmpty() || content.isEmpty()) {
 
-                Toast.makeText(this, "Başlık veya açıklama boş olamaz.", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, R.string.error_text, Toast.LENGTH_SHORT).show()
             }
 
             else {
 
-                val note = Note(0, title, content)
+                val note = Note(0, title, content, dateTime)
 
                 db.insertNote(note)
                 finish()

@@ -6,7 +6,7 @@
     android:padding="16dp"
     tools:context=".ViewNoteActivity">
 
-    <TextView
+    <com.google.android.material.textview.MaterialTextView
         android:id="@+id/noteHeading"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -14,10 +14,10 @@
         android:layout_marginTop="16dp"
         android:textAlignment="center"
         android:fontFamily="@font/poppins"
-        android:textColor="@color/orange"
+        android:textColor="@color/material_dynamic_primary50"
         android:textSize="24sp" />
 
-    <TextView
+    <com.google.android.material.textview.MaterialTextView
         android:id="@+id/noteContent"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -26,7 +26,7 @@
         android:padding="12dp"
         android:textSize="18sp"
         android:fontFamily="@font/poppins"
-        android:background="@drawable/orange_border"
+        android:background="@drawable/material_border"
         android:layout_below="@id/noteHeading"
         android:layout_marginTop="12dp" />
 

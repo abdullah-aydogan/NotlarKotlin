@@ -16,11 +16,12 @@ class NotesDatabaseHelper(context: Context) : SQLiteOpenHelper(context, DATABASE
         private const val COLUMN_ID = "id"
         private const val COLUMN_TITLE = "title"
         private const val COLUMN_CONTENT = "content"
+        private const val COLUMN_DATETIME = "datetime"
     }
 
     override fun onCreate(db: SQLiteDatabase?) {
 
-        val createTableQuery = "CREATE TABLE $TABLE_NAME ($COLUMN_ID INTEGER PRIMARY KEY, $COLUMN_TITLE TEXT, $COLUMN_CONTENT TEXT)"
+        val createTableQuery = "CREATE TABLE $TABLE_NAME ($COLUMN_ID INTEGER PRIMARY KEY, $COLUMN_TITLE TEXT, $COLUMN_CONTENT TEXT, $COLUMN_DATETIME TEXT)"
 
         db?.execSQL(createTableQuery)
     }
@@ -41,6 +42,7 @@ class NotesDatabaseHelper(context: Context) : SQLiteOpenHelper(context, DATABASE
 
             put(COLUMN_TITLE, note.title)
             put(COLUMN_CONTENT, note.content)
+            put(COLUMN_DATETIME, note.dateTime)
         }
 
         db.insert(TABLE_NAME, null, values)
@@ -59,8 +61,9 @@ class NotesDatabaseHelper(context: Context) : SQLiteOpenHelper(context, DATABASE
             val id = cursor.getInt(cursor.getColumnIndexOrThrow(COLUMN_ID))
             val title = cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_TITLE))
             val content = cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_CONTENT))
+            val dateTime = cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_DATETIME))
 
-            val note = Note(id, title, content)
+            val note = Note(id, title, content, dateTime)
             notesList.add(note)
         }
 
@@ -78,6 +81,7 @@ class NotesDatabaseHelper(context: Context) : SQLiteOpenHelper(context, DATABASE
 
             put(COLUMN_TITLE, note.title)
             put(COLUMN_CONTENT, note.content)
+            put(COLUMN_DATETIME, note.dateTime)
         }
 
         val whereClause = "$COLUMN_ID = ?"
@@ -98,11 +102,12 @@ class NotesDatabaseHelper(context: Context) : SQLiteOpenHelper(context, DATABASE
         val id = cursor.getInt(cursor.getColumnIndexOrThrow(COLUMN_ID))
         val title = cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_TITLE))
         val content = cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_CONTENT))
+        val dateTime = cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_DATETIME))
 
         cursor.close()
         db.close()
 
-        return Note(id, title, content)
+        return Note(id, title, content, dateTime)
     }
 
     fun deleteNote(noteId: Int) {
