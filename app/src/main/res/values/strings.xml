@@ -19,4 +19,17 @@
     <string name="languages">Languages</string>
 
     <string name="checkedItem">1</string>
+
+    <string name="error_no_hardware">Fingerprint authencation not supported on this device.</string>
+    <string name="error_hw_unawailable">Fingerprint authencation not currently unavailable on this device.</string>
+    <string name="error_none_enrolled">Fingerprint authencation is supported but the user has not enrolled any fingerprints.</string>
+
+    <string name="fingerprint_title">Fingerprint Authentication</string>
+    <string name="fingerprint_subtitle">Please place your finger on the scanner.</string>
+    <string name="fingerprint_negative">Cancel</string>
+
+    <string name="finger_alert_title">Fingerprint Login</string>
+    <string name="finger_alert_message">Do you want to login to the application with fingerprint?</string>
+    <string name="finger_alert_positive">Yes</string>
+    <string name="finger_alert_negative">No</string>
 </resources>

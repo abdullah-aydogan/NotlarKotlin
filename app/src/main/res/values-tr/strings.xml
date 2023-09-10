@@ -19,4 +19,17 @@
     <string name="languages">Diller</string>
 
     <string name="checkedItem">0</string>
+
+    <string name="error_no_hardware">Parmak izi kimlik doğrulaması bu cihazda desteklenmiyor.</string>
+    <string name="error_hw_unawailable">Parmak izi kimlik doğrulaması şu anda bu cihazda kullanılamıyor.</string>
+    <string name="error_none_enrolled">Parmak izi kimlik doğrulaması destekleniyor ancak kullanıcı herhangi bir parmak izi kaydetmedi.</string>
+
+    <string name="fingerprint_title">Parmak İzi Kimlik Doğrulaması</string>
+    <string name="fingerprint_subtitle">Lütfen parmağınızı tarayıcının üzerine koyun.</string>
+    <string name="fingerprint_negative">İptal</string>
+
+    <string name="finger_alert_title">Parmak İzi ile Giriş</string>
+    <string name="finger_alert_message">Uygulamaya parmak izi ile giriş yapmak ister misiniz?</string>
+    <string name="finger_alert_positive">Evet</string>
+    <string name="finger_alert_negative">Hayır</string>
 </resources>
