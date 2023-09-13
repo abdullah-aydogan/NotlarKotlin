@@ -22,8 +22,6 @@ class NotesAdapter(private var notes: List<Note>, context: Context)
         val titleTextView: TextView = itemView.findViewById(R.id.titleTextView)
         val contentTextView: TextView = itemView.findViewById(R.id.contentTextView)
         val dateTimeTextView: TextView = itemView.findViewById(R.id.dateTimeTextView)
-        val updateButton: ImageView = itemView.findViewById(R.id.updateButton)
-        val deleteButton: ImageView = itemView.findViewById(R.id.deleteButton)
         val noteCardView: CardView = itemView.findViewById(R.id.noteCardView)
     }
 
@@ -45,9 +43,9 @@ class NotesAdapter(private var notes: List<Note>, context: Context)
         holder.contentTextView.text = note.content
         holder.dateTimeTextView.text = note.dateTime
 
-        holder.updateButton.setOnClickListener {
+        holder.noteCardView.setOnClickListener {
 
-            val intent = Intent(holder.itemView.context, UpdateNoteActivity::class.java).apply {
+            val intent = Intent(holder.itemView.context, ViewNoteActivity::class.java).apply {
 
                 putExtra("note_id", note.id)
             }
@@ -55,7 +53,7 @@ class NotesAdapter(private var notes: List<Note>, context: Context)
             holder.itemView.context.startActivity(intent)
         }
 
-        holder.deleteButton.setOnClickListener {
+        holder.noteCardView.setOnLongClickListener {
 
             val alert = MaterialAlertDialogBuilder(holder.itemView.context)
 
@@ -77,16 +75,8 @@ class NotesAdapter(private var notes: List<Note>, context: Context)
             }
 
             alert.create().show()
-        }
 
-        holder.noteCardView.setOnClickListener {
-
-            val intent = Intent(holder.itemView.context, ViewNoteActivity::class.java).apply {
-
-                putExtra("note_id", note.id)
-            }
-
-            holder.itemView.context.startActivity(intent)
+            return@setOnLongClickListener true
         }
     }
 

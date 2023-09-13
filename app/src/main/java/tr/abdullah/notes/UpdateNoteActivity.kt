@@ -1,5 +1,6 @@
 package tr.abdullah.notes
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
@@ -53,7 +54,9 @@ class UpdateNoteActivity : AppCompatActivity() {
                 val updateNote = Note(noteId, newTitle, newContent, newdateTime)
 
                 db.updateNote(updateNote)
-                finish()
+
+                val intent = Intent(this, MainActivity::class.java)
+                startActivity(intent)
 
                 Toast.makeText(this, R.string.changes_saved, Toast.LENGTH_SHORT).show()
             }

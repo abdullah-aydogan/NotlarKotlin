@@ -1,8 +1,12 @@
 package tr.abdullah.notes
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.method.ScrollingMovementMethod
+import android.widget.ImageView
+import android.widget.Toast
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import tr.abdullah.notes.databinding.ActivityViewNoteBinding
 
 class ViewNoteActivity : AppCompatActivity() {
@@ -16,6 +20,44 @@ class ViewNoteActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityViewNoteBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        val gelenVeri = intent.getIntExtra("note_id", noteId)
+
+        binding.updateButton.setOnClickListener {
+
+            val intent = Intent(this, UpdateNoteActivity::class.java).apply {
+
+                putExtra("note_id", gelenVeri)
+            }
+
+            startActivity(intent)
+        }
+
+        binding.deleteButton.setOnClickListener {
+
+            val alert = MaterialAlertDialogBuilder(this)
+            val intent = Intent(this, MainActivity::class.java)
+
+            alert.setMessage(R.string.alert_text)
+            alert.setTitle(R.string.alert_title)
+            alert.setIcon(R.drawable.baseline_delete_24)
+
+            alert.setPositiveButton(R.string.delete) { dialogInferface, i ->
+
+                db.deleteNote(gelenVeri)
+
+                startActivity(intent)
+
+                Toast.makeText(this, R.string.note_deleted, Toast.LENGTH_SHORT).show()
+            }
+
+            alert.setNegativeButton(R.string.cancel) {dialogInterface, i ->
+
+                dialogInterface.dismiss()
+            }
+
+            alert.create().show()
+        }
 
         db = NotesDatabaseHelper(this)
         noteId = intent.getIntExtra("note_id", -1)

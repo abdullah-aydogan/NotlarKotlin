@@ -1,18 +1,13 @@
 package tr.abdullah.notes
 
-import android.app.KeyguardManager
 import android.content.Intent
 import android.content.res.Configuration
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.Toast
-import androidx.biometric.BiometricManager
-import androidx.biometric.BiometricPrompt
+import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import tr.abdullah.notes.databinding.ActivityMainBinding
 import java.util.Locale
-import java.util.concurrent.Executors
 
 class MainActivity : AppCompatActivity() {
 
@@ -117,10 +112,17 @@ class MainActivity : AppCompatActivity() {
         baseContext.resources.updateConfiguration(config, baseContext.resources.displayMetrics)
     }
 
-
     override fun onResume() {
 
         super.onResume()
         notesAdapter.refreshData(db.getAllNotes())
+    }
+
+    override fun onBackPressed() {
+
+        val intent = Intent(Intent.ACTION_MAIN)
+        intent.addCategory(Intent.CATEGORY_HOME)
+        intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK
+        startActivity(intent)
     }
 }

@@ -6,13 +6,35 @@
     android:padding="16dp"
     tools:context=".ViewNoteActivity">
 
+    <RelativeLayout
+        android:id="@+id/buttons"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/updateButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="30dp"
+            android:layout_toStartOf="@+id/deleteButton"
+            android:src="@drawable/baseline_edit_24" />
+
+        <ImageView
+            android:id="@+id/deleteButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:src="@drawable/baseline_delete_24" />
+
+    </RelativeLayout>
+
     <com.google.android.material.textview.MaterialTextView
         android:id="@+id/noteHeading"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_marginTop="16dp"
+        android:layout_below="@+id/buttons"
         android:fontFamily="@font/poppins"
+        android:layout_marginTop="16dp"
         android:textColor="@color/material_dynamic_primary50"
         android:textSize="24sp" />
 
@@ -24,6 +46,6 @@
         android:textSize="18sp"
         android:fontFamily="@font/poppins"
         android:layout_below="@id/noteHeading"
-        android:layout_marginTop="12dp" />
+        android:layout_marginTop="16dp" />
 
 </RelativeLayout>
