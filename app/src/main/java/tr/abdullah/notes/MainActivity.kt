@@ -3,6 +3,7 @@ package tr.abdullah.notes
 import android.content.Intent
 import android.content.res.Configuration
 import android.os.Bundle
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
@@ -56,12 +57,16 @@ class MainActivity : AppCompatActivity() {
 
                 editor.putBoolean("finger", true)
                 editor.commit()
+
+                Toast.makeText(this, R.string.fingerprint_set, Toast.LENGTH_SHORT).show()
             }
 
             alert.setNegativeButton(R.string.finger_alert_negative) {dialogInterface, i ->
 
                 editor.putBoolean("finger", false)
                 editor.commit()
+
+                Toast.makeText(this, R.string.fingerprint_message, Toast.LENGTH_SHORT).show()
             }
 
             alert.create().show()

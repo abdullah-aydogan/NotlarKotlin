@@ -32,4 +32,6 @@
     <string name="finger_alert_message">Do you want to login to the application with fingerprint?</string>
     <string name="finger_alert_positive">Yes</string>
     <string name="finger_alert_negative">No</string>
+    <string name="fingerprint_message">Login with fingerprint has been cancelled.</string>
+    <string name="fingerprint_set">Login with fingerprint is set.</string>
 </resources>

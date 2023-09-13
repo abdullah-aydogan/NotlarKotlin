@@ -32,4 +32,6 @@
     <string name="finger_alert_message">Uygulamaya parmak izi ile giriş yapmak ister misiniz?</string>
     <string name="finger_alert_positive">Evet</string>
     <string name="finger_alert_negative">Hayır</string>
+    <string name="fingerprint_message">Parmak izi ile giriş iptal edildi.</string>
+    <string name="fingerprint_set">Parmak izi ile giriş ayarlandı.</string>
 </resources>
