@@ -4,7 +4,6 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.method.ScrollingMovementMethod
-import android.widget.ImageView
 import android.widget.Toast
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import tr.abdullah.notes.databinding.ActivityViewNoteBinding
