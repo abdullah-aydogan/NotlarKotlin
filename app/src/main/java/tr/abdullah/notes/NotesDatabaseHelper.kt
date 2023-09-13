@@ -53,7 +53,7 @@ class NotesDatabaseHelper(context: Context) : SQLiteOpenHelper(context, DATABASE
 
         val notesList = mutableListOf<Note>()
         val db = readableDatabase
-        val query = "SELECT * FROM $TABLE_NAME"
+        val query = "SELECT * FROM $TABLE_NAME ORDER BY $COLUMN_ID DESC"
         val cursor = db.rawQuery(query, null)
 
         while (cursor.moveToNext()) {
