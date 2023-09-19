@@ -34,4 +34,8 @@
     <string name="finger_alert_negative">Hayır</string>
     <string name="fingerprint_message">Parmak izi ile giriş iptal edildi.</string>
     <string name="fingerprint_set">Parmak izi ile giriş ayarlandı.</string>
+
+    <string name="menu_fingerprint">Parmak İzi Ayarla</string>
+    <string name="menu_language">Dil Ayarla</string>
+    <string name="search">Not Ara</string>
 </resources>

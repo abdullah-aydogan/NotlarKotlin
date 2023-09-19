@@ -5,6 +5,7 @@ import android.content.res.Configuration
 import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.widget.PopupMenu
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import tr.abdullah.notes.databinding.ActivityMainBinding
@@ -24,8 +25,8 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-
         db = NotesDatabaseHelper(this)
+
         notesAdapter = NotesAdapter(db.getAllNotes(), this)
 
         binding.notesRecyclerView.layoutManager = LinearLayoutManager(this)
@@ -37,40 +38,59 @@ class MainActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
-        binding.languageButton.setOnClickListener {
+        binding.moreButton.setOnClickListener {
 
-            changeLanguage()
-        }
+            val popup = PopupMenu(this@MainActivity, binding.moreButton)
+            popup.menuInflater.inflate(R.menu.home_menu, popup.menu)
 
-        binding.fingerPrintButton.setOnClickListener {
+            popup.setOnMenuItemClickListener { item ->
 
-            val sp = getSharedPreferences("fingerprint", MODE_PRIVATE)
-            val editor = sp.edit()
+                when(item.itemId) {
 
-            val alert = MaterialAlertDialogBuilder(this)
+                    R.id.action_fingerprint -> {
+                        setFingerprint()
+                        true
+                    }
 
-            alert.setMessage(R.string.finger_alert_message)
-            alert.setTitle(R.string.finger_alert_title)
-            alert.setIcon(R.drawable.baseline_fingerprint_24)
+                    R.id.action_language -> {
+                        changeLanguage()
+                        true
+                    }
 
-            alert.setPositiveButton(R.string.finger_alert_positive) { dialogInferface, i ->
-
-                editor.putBoolean("finger", true)
-                editor.commit()
-
-                Toast.makeText(this, R.string.fingerprint_set, Toast.LENGTH_SHORT).show()
+                    else -> false
+                }
             }
 
-            alert.setNegativeButton(R.string.finger_alert_negative) {dialogInterface, i ->
+            popup.show()
+        }
 
-                editor.putBoolean("finger", false)
-                editor.commit()
+        binding.searchView.setOnQueryTextListener(object :
+            android.widget.SearchView.OnQueryTextListener {
 
-                Toast.makeText(this, R.string.fingerprint_message, Toast.LENGTH_SHORT).show()
+            override fun onQueryTextSubmit(query: String): Boolean {
+
+                db = NotesDatabaseHelper(this@MainActivity)
+
+                notesAdapter = NotesAdapter(db.searchNote(query), this@MainActivity)
+
+                binding.notesRecyclerView.layoutManager = LinearLayoutManager(this@MainActivity)
+                binding.notesRecyclerView.adapter = notesAdapter
+
+                return true
             }
 
-            alert.create().show()
-        }
+            override fun onQueryTextChange(newText: String): Boolean {
+
+                db = NotesDatabaseHelper(this@MainActivity)
+
+                notesAdapter = NotesAdapter(db.searchNote(newText), this@MainActivity)
+
+                binding.notesRecyclerView.layoutManager = LinearLayoutManager(this@MainActivity)
+                binding.notesRecyclerView.adapter = notesAdapter
+
+                return true
+            }
+        })
     }
 
     private fun changeLanguage() {
@@ -115,6 +135,36 @@ class MainActivity : AppCompatActivity() {
         config.locale = locale
 
         baseContext.resources.updateConfiguration(config, baseContext.resources.displayMetrics)
+    }
+
+    private fun setFingerprint() {
+
+        val sp = getSharedPreferences("fingerprint", MODE_PRIVATE)
+        val editor = sp.edit()
+
+        val alert = MaterialAlertDialogBuilder(this)
+
+        alert.setMessage(R.string.finger_alert_message)
+        alert.setTitle(R.string.finger_alert_title)
+        alert.setIcon(R.drawable.baseline_fingerprint_24)
+
+        alert.setPositiveButton(R.string.finger_alert_positive) { dialogInferface, i ->
+
+            editor.putBoolean("finger", true)
+            editor.commit()
+
+            Toast.makeText(this, R.string.fingerprint_set, Toast.LENGTH_SHORT).show()
+        }
+
+        alert.setNegativeButton(R.string.finger_alert_negative) {dialogInterface, i ->
+
+            editor.putBoolean("finger", false)
+            editor.commit()
+
+            Toast.makeText(this, R.string.fingerprint_message, Toast.LENGTH_SHORT).show()
+        }
+
+        alert.create().show()
     }
 
     override fun onResume() {
