@@ -22,6 +22,12 @@ class ViewNoteActivity : AppCompatActivity() {
 
         val gelenVeri = intent.getIntExtra("note_id", noteId)
 
+        binding.backButton.setOnClickListener {
+
+            val intent = Intent(this, MainActivity::class.java)
+            startActivity(intent)
+        }
+
         binding.updateButton.setOnClickListener {
 
             val intent = Intent(this, UpdateNoteActivity::class.java).apply {

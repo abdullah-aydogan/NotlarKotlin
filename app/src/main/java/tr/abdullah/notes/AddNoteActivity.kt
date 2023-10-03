@@ -1,5 +1,6 @@
 package tr.abdullah.notes
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
@@ -19,6 +20,12 @@ class AddNoteActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         db = NotesDatabaseHelper(this)
+
+        binding.backButton.setOnClickListener {
+
+            val intent = Intent(this, MainActivity::class.java)
+            startActivity(intent)
+        }
 
         binding.saveButton.setOnClickListener {
 

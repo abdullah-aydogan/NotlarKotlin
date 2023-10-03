@@ -34,6 +34,12 @@ class UpdateNoteActivity : AppCompatActivity() {
         binding.updateTitleEditText.setText(note.title)
         binding.updateContentEditText.setText(note.content)
 
+        binding.backButton.setOnClickListener {
+
+            val intent = Intent(this, MainActivity::class.java)
+            startActivity(intent)
+        }
+
         binding.updateSaveButton.setOnClickListener {
 
             val newTitle = binding.updateTitleEditText.text.toString()
