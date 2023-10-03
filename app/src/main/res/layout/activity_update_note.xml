@@ -17,7 +17,7 @@
         android:layout_alignParentTop="true"
         app:srcCompat="@drawable/baseline_arrow_back_24" />
 
-    <com.google.android.material.textview.MaterialTextView
+    <TextView
         android:id="@+id/editNoteHeading"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -26,7 +26,7 @@
         android:layout_marginTop="8dp"
         android:fontFamily="@font/poppins"
         android:text="@string/edit_note"
-        android:textColor="@color/material_dynamic_primary50"
+        android:textColor="@color/colorText"
         android:textSize="24sp" />
 
     <ImageView
@@ -47,7 +47,7 @@
         android:padding="12dp"
         android:textSize="20sp"
         android:layout_below="@id/editNoteHeading"
-        android:background="@drawable/material_border"
+        android:background="@drawable/custom_border"
         android:layout_marginTop="16dp"
         android:maxLength="50"
         android:fontFamily="@font/poppins" />
@@ -61,7 +61,7 @@
         android:padding="12dp"
         android:textSize="18sp"
         android:fontFamily="@font/poppins"
-        android:background="@drawable/material_border"
+        android:background="@drawable/custom_border"
         android:layout_below="@id/updateTitleEditText"
         android:layout_marginTop="12dp" />
 

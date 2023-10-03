@@ -1,12 +1,9 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
-    <style name="Base.Theme.Notes" parent="Theme.Material3.DynamicColors.Dark">
+    <style name="Base.Theme.Notes" parent="Theme.Material3.DayNight.NoActionBar">
         <!-- Customize your dark theme here. -->
-        <item name="colorPrimary">@color/material_dynamic_primary50</item>
-        <item name="colorPrimaryVariant">@color/material_dynamic_primary50</item>
-        <item name="android:statusBarColor">@color/material_dynamic_primary50</item>
-
-        <item name="windowActionBar">false</item>
-        <item name="windowNoTitle">true</item>
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryVariant">@color/colorAccent</item>
+        <item name="android:statusBarColor">@color/colorPrimaryDark</item>
     </style>
 </resources>

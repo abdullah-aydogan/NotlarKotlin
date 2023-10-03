@@ -5,7 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.method.ScrollingMovementMethod
 import android.widget.Toast
-import com.google.android.material.dialog.MaterialAlertDialogBuilder
+import androidx.appcompat.app.AlertDialog
 import tr.abdullah.notes.databinding.ActivityViewNoteBinding
 
 class ViewNoteActivity : AppCompatActivity() {
@@ -40,7 +40,7 @@ class ViewNoteActivity : AppCompatActivity() {
 
         binding.deleteButton.setOnClickListener {
 
-            val alert = MaterialAlertDialogBuilder(this)
+            val alert = AlertDialog.Builder(this)
             val intent = Intent(this, MainActivity::class.java)
 
             alert.setMessage(R.string.alert_text)

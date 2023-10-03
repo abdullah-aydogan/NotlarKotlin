@@ -7,9 +7,9 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 import androidx.cardview.widget.CardView
 import androidx.recyclerview.widget.RecyclerView
-import com.google.android.material.dialog.MaterialAlertDialogBuilder
 
 class NotesAdapter(private var notes: List<Note>, context: Context)
     : RecyclerView.Adapter<NotesAdapter.NoteViewHolder>() {
@@ -54,7 +54,7 @@ class NotesAdapter(private var notes: List<Note>, context: Context)
 
         holder.noteCardView.setOnLongClickListener {
 
-            val alert = MaterialAlertDialogBuilder(holder.itemView.context)
+            val alert = AlertDialog.Builder(holder.itemView.context)
 
             alert.setMessage(R.string.alert_text)
             alert.setTitle(R.string.alert_title)

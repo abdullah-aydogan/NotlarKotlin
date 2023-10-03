@@ -4,10 +4,10 @@ import android.content.Intent
 import android.content.res.Configuration
 import android.os.Bundle
 import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.PopupMenu
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import tr.abdullah.notes.databinding.ActivityMainBinding
 import java.util.Locale
 
@@ -96,7 +96,7 @@ class MainActivity : AppCompatActivity() {
     private fun changeLanguage() {
 
         val checkedItem: Int = getString(R.string.checkedItem).toInt()
-        val alert = MaterialAlertDialogBuilder(this)
+        val alert = AlertDialog.Builder(this)
 
         alert.setTitle(R.string.languages)
 
@@ -142,7 +142,7 @@ class MainActivity : AppCompatActivity() {
         val sp = getSharedPreferences("fingerprint", MODE_PRIVATE)
         val editor = sp.edit()
 
-        val alert = MaterialAlertDialogBuilder(this)
+        val alert = AlertDialog.Builder(this)
 
         alert.setMessage(R.string.finger_alert_message)
         alert.setTitle(R.string.finger_alert_title)
